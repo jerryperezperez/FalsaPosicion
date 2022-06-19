@@ -62,16 +62,10 @@ public class FalsaPosicion {
             System.out.print(es + "   ");
             System.out.println();
 
-            if (fxi > 0 & fa > 0) {
+            if ((fxi > 0 & fa > 0) ||(fxi < 0 & fa < 0)) {
                 a = xi;
             }
-            if (fxi > 0 & fb > 0) {
-                b = xi;
-            }
-            if (fxi < 0 & fa < 0) {
-                a = xi;
-            }
-            if (fxi < 0 & fb < 0) {
+            if ((fxi > 0 & fb > 0) || (fxi < 0 & fb < 0)) {
                 b = xi;
             }
             xiAux = xi;
