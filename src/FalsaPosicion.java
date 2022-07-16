@@ -1,22 +1,19 @@
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
-import java.util.Locale;
 import javax.swing.JOptionPane;
 import java.util.*;
-
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-
-
-public class FalsaPosicion {
+public abstract class FalsaPosicion {
 //más cambios que deben servir
+    //TODO Agregar variables de xi, xiAux, fxi y es como parámetros del constructor
+    public FalsaPosicion(){
+        System.out.println("HOLA");
+    }
 
-    public static void main(String[] args) {
+    public abstract void metodo();
 
+    public void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
         DecimalFormatSymbols simbolos = new DecimalFormatSymbols();
         simbolos.setDecimalSeparator('.');
         DecimalFormat df = new DecimalFormat("####.000000000", simbolos);
@@ -69,10 +66,6 @@ public class FalsaPosicion {
                 b = xi;
             }
             xiAux = xi;
-
         }
-
-
     }
-
 }
