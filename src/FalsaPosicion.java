@@ -27,46 +27,47 @@ public abstract class FalsaPosicion {
         intervals = new double[] {intervalA, intervalB};
     }
 
-    public abstract double defineFormula(double var);
+    public abstract double defineFormula(double var);//Método abstracto para definir la función por utilizar
 
-    public double useFormula(double var) {
+    public double useFormula(double var) { //Método usado para poder invocar la función definida en useFormula()
         return defineFormula(var);
     }
 
-    private void calculateFX(){
+    private void calculateFX(){ //Realiza el cálculo de la fórmula para f(a) y f(b)
         for (int i = 0; i < intervals.length; i++) {
             fx[i] = Double.parseDouble(df.format(this.useFormula(intervals[i])));
         }
     }
 
-    public void calculate(){
+    public void calculate(){ //Método que se emplea para resolver e iterar el proceso del cálculo
         this.calculateFX();
         for (int counter = 1; es > approximationError; counter++) {
           this.calculateFX();
             xi = Double.parseDouble(df.format(((intervals[0] * fx[1]) - (intervals[1] * fx[0])) / (fx[1] - fx[0])));
-            if (counter >= 2) {
-                es = ((xi - xiAux) / xi) * 100;
+            if (counter >= 2) { //Condición que se puede realizar solamente cuando está en la segunda iteración
+/*                La razón para counter-2 es porque counter comienza desde 1, por lo que se debe acceder ala posición de
+                memoria anterior, implicando que deba ser 2 para acceder a la verdadera posición anterior de memoria*/
+                es = ((xi - data.get(counter-2)[5]) / xi) * 100; //Define es, ya que en la primera iteración esta operación no se puede realizar
             }
             fxi = Double.parseDouble(df.format(useFormula(xi)));
-            data.add(new double[]{counter, intervals[0], intervals[1], fx[0], fx[1], xi, fxi, es});
-            for (int i = 0; i < intervals.length; i++) {
+            data.add(new double[]{counter, intervals[0], intervals[1], fx[0], fx[1], xi, fxi, es}); //Se agrega la fila en la matriz data
+            for (int i = 0; i < intervals.length; i++) { //Se asignan los nuevos valores a intervals[] en caso de cumpir la condción
                 if ((fxi > 0 & fx[i] > 0) || (fxi < 0 & fx[i] < 0)) {
                     intervals[i] = xi;
                 }
             }
-            xiAux = xi;
         }
     }
 
-    public double getXi() {
+    public double getXi() { //Retorna el resultado de la última iteración calculada
         return xi;
     }
 
-    public ArrayList<double[]> getData() {
+    public ArrayList<double[]> getData() { //Retorna una matriz con todos los datos de operación
         return data;
     }
 
-    public double getEs() {
+    public double getEs() { //Retorna el último error de aproximación calculado
         return es;
     }
 

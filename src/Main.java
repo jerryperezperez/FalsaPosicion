@@ -13,6 +13,7 @@ public class Main {
             }
         };
         falsa.calculate();
+
         System.out.println(falsa.toString());
     }
 
