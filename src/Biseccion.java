@@ -1,16 +1,14 @@
-//TODO Mejorar posiblemente la estructura
-//TODO Organizar variables
-//TODO Mejorar el uso de DecimalFormat
-public abstract class FalsaPosicion extends MetodoNumerico{
-
-    public FalsaPosicion(double approximationError, double intervalA, double intervalB){
-        super(approximationError,intervalA, intervalB );
+public abstract class Biseccion extends MetodoNumerico {
+    public Biseccion(double approximationError, double intervalA, double intervalB) {
+        super(approximationError, intervalA, intervalB);
     }
-    public void calculate(){ //Método que se emplea para resolver e iterar el proceso del cálculo
+
+
+    @Override
+    public void calculate() {
         this.calculateFX();
         for (int counter = 1; es > approximationError; counter++) {
-          this.calculateFX();
-            xi = Double.parseDouble(df.format(((intervals[0] * fx[1]) - (intervals[1] * fx[0])) / (fx[1] - fx[0])));
+            xi = Double.parseDouble(df.format((intervals[0] + intervals[1])/2));
             if (counter >= 2) { //Condición que se puede realizar solamente cuando está en la segunda iteración
 /*                La razón para counter-2 es porque counter comienza desde 1, por lo que se debe acceder ala posición de
                 memoria anterior, implicando que deba ser 2 para acceder a la verdadera posición anterior de memoria*/
