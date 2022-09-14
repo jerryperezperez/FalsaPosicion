@@ -23,4 +23,9 @@ public abstract class Biseccion extends MetodoNumerico {
             }
         }
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
 }

@@ -1,10 +1,11 @@
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.Vector;
 
 public class Main {
 
+
+
     public static void main(String[] args) {
+
 //        FalsaPosicion falsa = new FalsaPosicion(.05, 8, 11) {
 //            @Override
 //            public double defineFormula(double var) {
@@ -24,11 +25,16 @@ public class Main {
         Biseccion biseccion = new Biseccion(.05, 1, 1.6) {
             @Override
             public double defineFormula(double var) {
-                return (4*(var*var))-(5*var);
+                return (4 * (var * var)) - (5 * var);
             }
         };
-        biseccion.calculate();
-        System.out.println(biseccion.toString());
+//        biseccion.calculate();
+//        System.out.println(biseccion.toString());
+
+
+
+
+
     }
 
 }
